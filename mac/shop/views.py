@@ -25,24 +25,22 @@ class Handlelogin(View):
         account = True
         return render(request, "shop/login.html", {"account": account})
     def post(self,request,*args,**kwargs):
-        if request.method == 'POST':
-            username = request.POST['Username']
-            password = request.POST['passwordlogin']
-            user = authenticate(username=username, password=password)
+        
+        username = request.POST['Username']
+        password = request.POST['passwordlogin']
+        user = authenticate(username=username, password=password)
 
-            print(user)
-            if user is not None:
-                login(request, user)
-                # user=Profile.objects.get(user=request.user)
-                # cart=user.cart_json
-                # print("ho",cart)*/
-                messages.success(request, 'Login Succesfully')
-                account = True
+        print(user)
+        if user is not None:
+            login(request, user)
+        
+            messages.success(request, 'Login Succesfully')
+            account = True
 
-                return render(request, "shop/about.html", {"account": account, "username": user})
-            else:
-                account = False
-                return render(request, "shop/login.html", {"account": account})
+            return render(request, "shop/about.html", {"account": account, "username": user})
+        else:
+            account = False
+            return render(request, "shop/login.html", {"account": account})
 
 class Handlesignup(View):
     def get(self,request,*args,**kwargs):
@@ -55,6 +53,7 @@ class Handlesignup(View):
         phone = request.POST['phone']
         email = request.POST['email']
         password = request.POST['password']
+
   
        
         try:
@@ -66,7 +65,8 @@ class Handlesignup(View):
 
             messages.success(request, "Account Created")
             success = True
-            return render(request, "shop/index.html", {"Account": success})
+            print("signup.......")
+            return render(request, "shop/about.html", {"Account": success})
 
         except:
             return render(request, "shop/signup.html", {"Account": True})
@@ -75,12 +75,15 @@ class Handlesignup(View):
 
 class Handlelogout(View):
     def post(self,request,*args,**kwargs):
+       
+        return render(request, "shop/login.html", {"account":True,"logout": True});
+    def get(self,request,*args,**kwargs):
+        
         datas = Profile.objects.get(user=request.user)
         datas.save()
     
         logout(request)
         logoutt = True
         account=True
+        print("logout1.......")
         return render(request, "shop/login.html", {"account":True,"logout": True});
-    def get(self,request,*args,**kwargs):
-        return render(request, "shop/login.html");
