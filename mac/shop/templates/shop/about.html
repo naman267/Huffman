@@ -471,6 +471,11 @@ label #sidebar_btn:hover{
     </div>
 
     <script type="text/javascript">
+     {% if Account %}
+    
+    alert('Your Account Has been created succesfully');
+    document.location='about'
+    {% endif %}
         {% if account %}
     alert("login succesfully")
     document.location="about"
