@@ -41,7 +41,7 @@
 
 </html>
 -->
-
+<!--
 <html>
 
 <head>
@@ -207,4 +207,569 @@ body{
 
 
 
+</html>
+-->
+
+<!--
+<html>
+
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <script src="{% static 'heap.js'%}" type="module"></script>
+    <script src="{% static 'huff.js' %}" type="module"></script>
+    <script src="{% static 'decode.js' %}" type="module"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+body{
+   background-color: #f3f5f9;
+}
+
+.wrapper{
+  display: flex;
+  position: relative;
+}
+
+.wrapper .sidebar{
+  width: 200px;
+  height: 100%;
+  background: #4b4276;
+  padding: 30px 0px;
+  position: fixed;
+}
+
+.wrapper .sidebar h2{
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.wrapper .sidebar ul li{
+  padding: 15px;
+  border-bottom: 1px solid #bdb8d7;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.wrapper .sidebar ul li a{
+  color: #bdb8d7;
+  display: block;
+}
+
+.wrapper .sidebar ul li a .fas{
+  width: 25px;
+}
+
+.wrapper .sidebar ul li:hover{
+  background-color: #594f8d;
+}
+
+.wrapper .sidebar ul li:hover a{
+  color: #fff;
+}
+
+.wrapper .sidebar .social_media{
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+
+.wrapper .sidebar .social_media a{
+  display: block;
+  width: 40px;
+  background: #594f8d;
+  height: 40px;
+  line-height: 45px;
+  text-align: center;
+  margin: 0 5px;
+  color: #bdb8d7;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.wrapper .main_content{
+  width: 100%;
+  margin-left: 200px;
+}
+
+.wrapper .main_content .header{
+  padding: 20px;
+  background: #fff;
+  color: #717171;
+  border-bottom: 1px solid #e0e4e8;
+}
+
+.wrapper .main_content .info{
+  margin: 20px;
+  color: #717171;
+  line-height: 25px;
+}
+
+.wrapper .main_content .info div{
+  margin-bottom: 20px;
+}
+.wrapper{
+    height:100%;
+}
+.bold{
+    color:white;
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="sidebar">
+            <h2>Dashboard</h2>
+            <h5><b class="bold">Welcome {{request.user}}</b></h5>
+            <ul>
+                <li><a href="/shop/encode">Encode</a></li>
+                <li><a href="/shop/decode">Decode</a></li>
+                <li><a href="/shop/logout">logout</a></li>
+            </ul>
+        </div>
+        <div class="main_content">
+                <nav class="navbar navbar-light " style="font-size: 25px; font-family: sans-serif; background-color: whitesmoke;">
+     
+        Huffman EnDec Project
+    </nav>
+    <div id="container">
+        <div class="text_box" style="overflow-y: scroll">
+            <span id="treearea" style="width: 100%; text-align: center; font-size: medium;">
+                Tree Structure Will Be Displayed Here !!
+            </span>
+        </div>
+        <div class="text_box" style="overflow-y: scroll">
+            <span id="temptext" style="width: 100%; text-align: center; font-size: x-large;">
+                Operation info will be shown here !!
+            </span>
+        </div>
+    </div>
+    <div>
+        <form method="post" enctype="multipart/form-data" style="display: inline-block;">
+            <input type="file" id="uploadedFile" />
+        </form>
+        <br>
+        <button type="button" class="btn btn-success center_buttons" id="decode">&nbsp;&nbsp;Decode&nbsp;&nbsp;</button>
+    </div>
+
+        </div>
+    </div>
+</body>
+
+
+
+</html>
+-->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+
+    {% load static %}
+    
+    <script src="{% static 'heap.js'%}" type="module"></script>
+    <script src="{% static 'huff.js' %}" type="module"></script>
+    <script src="{% static 'scrip.js' %}" type="module"></script>
+  <style>
+
+#encode{
+  margin-top: 5px;
+  padding:5px;
+}
+
+.text_box {
+    padding: 30px;
+    width: 50%;
+    height: 90%;
+    border: 1px solid lightgray;
+    display: flex;
+    margin-top:40px;
+   flex-wrap: wrap;
+    align-content: center;
+    
+}
+
+#container{
+    width: 100%;
+    height: 70%;
+    background-color: white;
+    display: flex;
+    /*margin: 0 auto;*/
+}
+
+.center_buttons{
+    margin:auto;
+    display:block;
+}
+
+#uploadedFile{
+  margin-top:40px;
+}
+
+
+body{
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+header{
+  z-index: 1;
+  position: fixed;
+  background: #22242A;
+  padding: 20px;
+  width: calc(100% - 0%);
+  top: 0;
+  height: 30px;
+}
+
+.left_area h3{
+  color: #fff;
+  margin: 0;
+  text-transform: uppercase;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.left_area span{
+  color: #19B3D3;
+}
+
+.logout_btn{
+  padding: 5px;
+  background: #19B3D3;
+  text-decoration: none;
+  float: right;
+  margin-top: -30px;
+  margin-right: 40px;
+  border-radius: 2px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  transition: 0.5s;
+  transition-property: background;
+}
+
+.logout_btn:hover{
+  background: #0B87A6;
+}
+
+.sidebar{
+  z-index: 1;
+  top: 0;
+  background: #2f323a;
+  margin-top: 70px;
+  padding-top: 30px;
+  position: fixed;
+  left: 0;
+  width: 250px;
+  height: calc(100% - 9%);
+  transition: 0.5s;
+  transition-property: left;
+  overflow-y: auto;
+}
+
+.profile_info{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar .profile_info .profile_image{
+  width: 100px;
+  height: 100px;
+  border-radius: 100px;
+  margin-bottom: 10px;
+}
+
+.sidebar .profile_info h4{
+  color: #ccc;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.sidebar a{
+  color: #fff;
+  display: block;
+  width: 100%;
+  line-height: 60px;
+  text-decoration: none;
+  padding-left: 40px;
+  box-sizing: border-box;
+  transition: 0.5s;
+  transition-property: background;
+}
+
+.sidebar a:hover{
+  background: #19B3D3;
+}
+
+.sidebar i{
+  padding-right: 10px;
+}
+
+label #sidebar_btn{
+  z-index: 1;
+  color: #fff;
+  position: fixed;
+  cursor: pointer;
+  left: 300px;
+  font-size: 20px;
+  margin: 5px 0;
+  transition: 0.5s;
+  transition-property: color;
+}
+
+label #sidebar_btn:hover{
+  color: #19B3D3;
+}
+
+#check:checked ~ .sidebar{
+  left: -185px;
+}
+
+#check:checked ~ .sidebar a span{
+  display: none;
+}
+
+#check:checked ~ .sidebar a{
+  font-size: 20px;
+  margin-left: 165px;
+  width: 100%;
+}
+
+.content{
+  /*width: (100% - 250px);*/
+  /*margin-top: 80px;*/
+  /*padding: 20px;*/
+  margin-left: 250px;
+ 
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  transition: 0.5s;
+}
+
+#check:checked ~ .content{
+  margin-left: 60px;
+}
+
+#check:checked ~ .sidebar .profile_info{
+  display: none;
+}
+
+#check{
+  display: none;
+}
+
+.mobile_nav{
+  display: none;
+}
+
+.content .card p{
+  background: #fff;
+  padding: 15px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* Responsive CSS */
+
+@media screen and (max-width: 780px){
+  .sidebar{
+    display: none;
+  }
+
+  #sidebar_btn{
+    display: none;
+  }
+
+  .content{
+    margin-left: 0;
+    margin-top: 0;
+    /*padding: 10px 20px;*/
+    transition: 0s;
+  }
+
+  #check:checked ~ .content{
+    margin-left: 0;
+  }
+
+  .mobile_nav{
+    display: block;
+    width: calc(100% - 0%);
+  }
+
+  .nav_bar{
+    background: #222;
+    width: (100% - 0px);
+    margin-top: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+  }
+
+  .nav_bar .mobile_profile_image{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+
+  .nav_bar .nav_btn{
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+    transition: 0.5s;
+    transition-property: color;
+  }
+
+  .nav_bar .nav_btn:hover{
+    color: #19B3D3;
+  }
+
+  .mobile_nav_items{
+    background: #2F323A;
+    display: none;
+  }
+
+  .mobile_nav_items a{
+    color: #fff;
+    display: block;
+    text-align: center;
+    letter-spacing: 1px;
+    line-height: 60px;
+    text-decoration: none;
+    box-sizing: border-box;
+    transition: 0.5s;
+    transition-property: background;
+  }
+
+  .mobile_nav_items a:hover{
+    background: #19B3D3;
+  }
+
+  .mobile_nav_items i{
+    padding-right: 10px;
+  }
+
+  .active{
+    display: block;
+  }
+
+#treearea{
+  margin-top:10px;
+}
+}
+                           
+</style> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Compressor</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+  </head>
+  <body>
+
+    <input type="checkbox" id="check">
+    <!--header area start-->
+    <header>
+      <label for="check">
+        <i class="fas fa-bars" id="sidebar_btn"></i>
+      </label>
+      <div class="left_area">
+        <h3>Huffman<span>Encoder</span></h3>
+      </div>
+ 
+    </header>
+    <!--header area end-->
+    <!--mobile navigation bar start-->
+    <div class="mobile_nav">
+      <div class="nav_bar">
+        <img src="1.png" class="mobile_profile_image" alt="">
+        <i class="fa fa-bars nav_btn"></i>
+      </div>
+      <div class="mobile_nav_items">
+        
+      <a href="/shop/encode"><i class="fas"></i><span>Encode</span></a>
+      <a href="/shop/decode"><i class="fas"></i><span>Decode</span></a>
+      <a href="/shop/about"><i class="fas"></i><span>About</span></a>
+      <a href="/shop/logout"><i class="fas"></i><span>Logout</span></a>
+
+      </div>
+    </div>
+    <!--mobile navigation bar end-->
+    <!--sidebar start-->
+    <div class="sidebar">
+      <div class="profile_info">
+       
+        <h4>Welcome {{request.user}}</h4>
+      </div>
+     
+      <a href="/shop/encode"><i class="fas"></i><span>Encode</span></a>
+      <a href="/shop/decode"><i class="fas "></i><span>Decode</span></a>
+      <a href="/shop/about"><i class="fas"></i><span>About</span></a>
+      <a href="/shop/logout"><i class="fas "></i><span>Logout</span></a>
+      
+    </div>
+    <!--sidebar end-->
+
+    <div class="content">
+      <div id="container">
+        <div class="text_box" style="overflow-y: scroll">
+            <div id="treearea" style="width: 100%; text-align: center; font-size: medium; margin-top:50px;">
+                <b>Tree Structure Will Be Displayed Here !!</b>
+            </div>
+        </div>
+        <div class="text_box" style="overflow-y: scroll">
+            <div id="temptext" style="width: 100%; text-align: center; font-size: x-large; margin-top:50px;">
+                Operation info will be shown here !!
+            </div>
+        </div>
+    </div>
+    <div style="margin-bottom: 5px;">
+        <form method="post" enctype="multipart/form-data" style="display: inline-block;">
+            <input  style="margin-bottom:5px;"type="file" id="uploadedFile" />
+        </form>
+        <br>
+        <button type="button"style="padding:5px;" class="btn btn-success center_buttons" id="encode">&nbsp;&nbsp;Encode&nbsp;&nbsp;</button>
+    </div>
+      
+    </div>
+
+    <script type="text/javascript">
+        {% if account %}
+    alert("login succesfully")
+    document.location="dashboard"
+ {% endif %}
+    $(document).ready(function(){
+      $('.nav_btn').click(function(){
+        $('.mobile_nav_items').toggleClass('active');
+      });
+    });
+    </script>
+
+  </body>
 </html>

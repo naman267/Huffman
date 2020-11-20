@@ -1,17 +1,7 @@
-
-<!--
-<html>
+<!--<html>
 
 <head>
-  <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'style.css' %}">
-    <script src="{% static 'heap.js'%}" type="module"></script>
-    <script src="{% static 'huff.js' %}" type="module"></script>
-    <script src="{% static 'decode.js' %}" type="module"></script>
+    <link rel="stylesheet" href="style.css">
     <style>
         @import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
 
@@ -114,12 +104,6 @@ body{
 .wrapper .main_content .info div{
   margin-bottom: 20px;
 }
-.wrapper{
-    height:100%;
-}
-.bold{
-    color:white;
-}
 
     </style>
 </head>
@@ -128,7 +112,6 @@ body{
     <div class="wrapper">
         <div class="sidebar">
             <h2>Dashboard</h2>
-            <h5><b class="bold">Welcome {{request.user}}</b></h5>
             <ul>
                 <li><a href="/shop/encode">Encode</a></li>
                 <li><a href="/shop/decode">Decode</a></li>
@@ -136,84 +119,27 @@ body{
             </ul>
         </div>
         <div class="main_content">
-                <nav class="navbar navbar-light " style="font-size: 25px; font-family: sans-serif; background-color: whitesmoke;">
-     
-        Huffman EnDec Project
-    </nav>
-    <div id="container">
-        <div class="text_box" style="overflow-y: scroll">
-            <span id="treearea" style="width: 100%; text-align: center; font-size: medium;">
-                Tree Structure Will Be Displayed Here !!
-            </span>
-        </div>
-        <div class="text_box" style="overflow-y: scroll">
-            <span id="temptext" style="width: 100%; text-align: center; font-size: x-large;">
-                Operation info will be shown here !!
-            </span>
-        </div>
-    </div>
-    <div>
-        <form method="post" enctype="multipart/form-data" style="display: inline-block;">
-            <input type="file" id="uploadedFile" />
-        </form>
-        <br>
-        <button type="button" class="btn btn-success center_buttons" id="decode">&nbsp;&nbsp;Decode&nbsp;&nbsp;</button>
-    </div>
-
+            <h2>Main Content</h2>
         </div>
     </div>
 </body>
+<script>
+  {% if account %}
+    alert("login succesfully")
+    document.location="dashboard"
+ {% endif %}
+ 
 
+
+</script>
 
 
 </html>
 -->
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'style.css' %}">
-    <script src="{% static 'heap.js'%}" type="module"></script>
-    <script src="{% static 'huff.js' %}" type="module"></script>
-    <script src="{% static 'decode.js' %}" type="module"></script>
   <style>
-
-#decode{
-  margin-top: 5px;
-  padding:5px;
-}
-
-.text_box {
-    padding: 30px;
-    width: 50%;
-    height: 100%;
-    border: 1px solid lightgray;
-    display: flex;
-   /* flex-wrap: wrap;*/
-    align-content: center;
-    
-}
-
-#container{
-    width: 100%;
-    height: 70%;
-    background-color: white;
-    display: flex;
-    /*margin: 0 auto;*/
-}
-
-.center_buttons{
-    margin:auto;
-    display:block;
-}
-
-#uploadedFile{
-  margin-top:40px;
-}
-
-
 body{
   margin: 0;
   padding: 0;
@@ -347,11 +273,11 @@ label #sidebar_btn:hover{
 }
 
 .content{
-  /*width: (100% - 250px);*/
-  /*margin-top: 80px;*/
-  /*padding: 20px;*/
+  width: (100% - 250px);
+  margin-top: 60px;
+  padding: 20px;
   margin-left: 250px;
- 
+  background: url(background.png) no-repeat;
   background-position: center;
   background-size: cover;
   height: 100vh;
@@ -396,7 +322,7 @@ label #sidebar_btn:hover{
   .content{
     margin-left: 0;
     margin-top: 0;
-    /*padding: 10px 20px;*/
+    padding: 10px 20px;
     transition: 0s;
   }
 
@@ -465,14 +391,12 @@ label #sidebar_btn:hover{
   .active{
     display: block;
   }
-
-
 }
                            
 </style> 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>File Compressor</title>
+    <title>File compressor</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
@@ -486,14 +410,14 @@ label #sidebar_btn:hover{
         <i class="fas fa-bars" id="sidebar_btn"></i>
       </label>
       <div class="left_area">
-        <h3>Huffman<span>Decoder</span></h3>
+        <h3>File<span>Compressor</span></h3>
       </div>
- 
+    
     </header>
     <!--header area end-->
     <!--mobile navigation bar start-->
     <div class="mobile_nav">
-      <div class="nav_bar">
+      <div class="nav_bar">s
         <img src="1.png" class="mobile_profile_image" alt="">
         <i class="fa fa-bars nav_btn"></i>
       </div>
@@ -523,32 +447,33 @@ label #sidebar_btn:hover{
     <!--sidebar end-->
 
     <div class="content">
-      <div id="container">
-        <div class="text_box" style="overflow-y: scroll">
-            <div id="treearea" style="width: 100%; text-align: center; font-size: medium; margin: none;">
-                <b>Tree Structure Will Be Displayed Here !!</b>
-            </div>
-        </div>
-        <div class="text_box" style="overflow-y: scroll">
-            <span id="temptext" style="width: 100%; text-align: center; font-size: x-large;">
-                Operation info will be shown here !!
-            </span>
-        </div>
-    </div>
-    <div>
-        <form method="post" enctype="multipart/form-data" style="display: inline-block;">
-            <input type="file" id="uploadedFile" />
-        </form>
-        <br>
-        <button type="button" class="btn btn-success center_buttons" id="decode">&nbsp;&nbsp;Decode&nbsp;&nbsp;</button>
-    </div>
+      <div class="card">
+      <h1 style="display:flex;justify-content: center;">File Compressor</h1> 
+      <p>This is a File compressor which uses Huffman algorithm for the process of encoding and decoding </br></p>
+    
+    <p>You can use this compressor to compress a text file and decomress the same text file</p>
+    
+    <p>
+      Encode button in the sidebar will take you to the compressor page where you just need to choose the file from your system </br>
+      and the file will be compressed and will be downloaded to your system
+    </p>
+    <p>
+       Decode button in the sidebar will take you to the decoder page where you just need to choose the file from your system 
+     </br>
+      and the file will be decompressed and will be downloaded to your system
+    </p>
+    <p>
+      While decoding and encoding any text file the website will be using <b>HUFFMAN</b> algorithm so the huffman tree will also </br>be visible to you for that particular text file
+    </p>
+
+      </div>
       
     </div>
 
     <script type="text/javascript">
         {% if account %}
     alert("login succesfully")
-    document.location="dashboard"
+    document.location="about"
  {% endif %}
     $(document).ready(function(){
       $('.nav_btn').click(function(){

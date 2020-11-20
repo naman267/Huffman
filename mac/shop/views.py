@@ -16,6 +16,8 @@ def decode(request):
     return render(request,'shop/decode.html')
 def index(request):
     return render(request, 'shop/dashboard.html')
+def about(request):
+    return render(request, 'shop/about.html')
 
 
 class Handlelogin(View):
@@ -37,7 +39,7 @@ class Handlelogin(View):
                 messages.success(request, 'Login Succesfully')
                 account = True
 
-                return render(request, "shop/dashboard.html", {"account": account, "username": user})
+                return render(request, "shop/about.html", {"account": account, "username": user})
             else:
                 account = False
                 return render(request, "shop/login.html", {"account": account})
@@ -79,6 +81,6 @@ class Handlelogout(View):
         logout(request)
         logoutt = True
         account=True
-        return render(request, "shop/login.html", {"account":account,"logout": logoutt});
+        return render(request, "shop/login.html", {"account":True,"logout": True});
     def get(self,request,*args,**kwargs):
         return render(request, "shop/login.html");

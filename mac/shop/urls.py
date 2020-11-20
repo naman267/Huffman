@@ -7,6 +7,7 @@ urlpatterns = [
     path("logout",views.Handlelogout.as_view(),name='logout'),
     path('dashboard',views.index,name="index"),
     path('encode',views.encode,name="encode"),
-    path('decode',views.decode,name="decode")
+    path('decode',views.decode,name="decode"),
+    path('about/',views.about,name="about")
  ]
 

@@ -34,7 +34,7 @@ onload = function () {
             downloadFile(uploadedFile.name.split('.')[0] +'_encoded.txt', encoded);
             console.log(encoded.size)
             treearea.innerText = tree_structure;
-            treearea.style.marginTop = '2000px';
+            treearea.style.marginTop = '20px';
             temptext.innerText = info;
         };
         fileReader.readAsText(uploadedFile, "UTF-8");

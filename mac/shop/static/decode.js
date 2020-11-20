@@ -45,7 +45,7 @@ onload = function () {
         }
         const fileReader = new FileReader();
         fileReader.onload = function(fileLoadedEvent){
-            const text = fileLoadedEvent.target.result;
+            var text = fileLoadedEvent.target.result;
             text=text.trim();
             if(text.length===0){
                 alert("Text can not be empty ! Upload another file !");
@@ -54,7 +54,7 @@ onload = function () {
             let [decoded, tree_structure, info] = coder.decode(text);
             downloadFile(uploadedFile.name.split('.')[0] +'_decoded.txt', decoded);
             treearea.innerText = tree_structure;
-            treearea.style.marginTop = '2000px';
+            treearea.style.marginTop = '10px';
             temptext.innerText = info;
         };
         fileReader.readAsText(uploadedFile, "UTF-8");
